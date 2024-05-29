@@ -21,7 +21,7 @@ export const FinancialRecordProvider = ({ children }) => {
     }, [user])
 
     const addRecord = async (record) => {
-        const response = await fetch(`${apiurl}/financial-record`, {
+        const response = await fetch(`${apiurl}/financial-records`, {
             method: 'POST',
             body: JSON.stringify(record),
             headers: {
