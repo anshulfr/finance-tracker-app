@@ -11,7 +11,8 @@ export const FinancialRecordProvider = ({ children }) => {
     const fetchRecords = async () => {
         if (!user) return
         const response = await fetch(`${apiurl}/financial-records/getAllByUserID/${user.id}`)
-
+        console.log('test:');
+        console.log(apiurl);
         if (response.ok) {
             const records = await response.json()
             setRecords(records)
