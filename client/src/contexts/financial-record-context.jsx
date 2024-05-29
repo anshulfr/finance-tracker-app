@@ -3,7 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 
 export const FinancialRecordContext = createContext(undefined);
 
-const apiurl = process.env.REACT_APP_API_URL || 'http://localhost:3001'
+const apiurl = process.env.REACT_APP_API_URL
 
 export const FinancialRecordProvider = ({ children }) => {
     const [records, setRecords] = useState([])
