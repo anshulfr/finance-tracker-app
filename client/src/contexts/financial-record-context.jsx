@@ -1,10 +1,8 @@
 import { useState, useContext, createContext, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
-import dotenv from 'dotenv';
-dotenv.config();
 export const FinancialRecordContext = createContext(undefined);
 
-const apiurl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const apiurl = import.meta.env.VITE_REACT_APP_API_URL || 'http://localhost:3001';
 
 export const FinancialRecordProvider = ({ children }) => {
     const [records, setRecords] = useState([])
