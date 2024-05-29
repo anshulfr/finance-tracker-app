@@ -1,9 +1,10 @@
 import { useState, useContext, createContext, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
-
+import dotenv from 'dotenv';
+dotenv.config();
 export const FinancialRecordContext = createContext(undefined);
 
-const apiurl = process.env.REACT_APP_API_URL
+const apiurl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 export const FinancialRecordProvider = ({ children }) => {
     const [records, setRecords] = useState([])
@@ -11,8 +12,6 @@ export const FinancialRecordProvider = ({ children }) => {
     const fetchRecords = async () => {
         if (!user) return
         const response = await fetch(`${apiurl}/financial-records/getAllByUserID/${user.id}`)
-        console.log('test:');
-        console.log(apiurl);
         if (response.ok) {
             const records = await response.json()
             setRecords(records)
